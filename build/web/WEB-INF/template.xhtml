@@ -10,7 +10,7 @@
         <f:facet name="first">
             <link rel="icon" type="image/x-ico" href="#{request.contextPath}/images/logo.ico"/>
         </f:facet>
-        <title><ui:insert name="title">Proyecto Javae</ui:insert></title>
+        
         <h:outputScript name="js/nanoscroller.js" library="mirage-layout" />
         <h:outputScript name="js/layout.js" library="mirage-layout" />
         <ui:insert name="head"/>
@@ -21,19 +21,12 @@
             <ui:include src="sidebar.xhtml" />
             
             <div class="layout-main">
-                <ui:include src="topbar.xhtml" />
-                
-                <!-- <ui:include src="rightpanel.xhtml" /> --> 
-                <!-- <ui:include src="breadcrumb.xhtml" /> -->    
+                <ui:include src="topbar.xhtml" /> 
                
                 <div class="layout-content">
                     <ui:insert name="content"/>
                     
                 </div>
-                
-              
-                
-                <!-- <ui:include src="config.xhtml" /> -->  
                 
                 <div class="layout-main-mask"></div>
             </div>

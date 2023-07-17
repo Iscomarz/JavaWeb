@@ -40,7 +40,7 @@ public class LoginBean {
         } else {
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN,
                     "Usuario o contraseña incorrecto!",
-                    "Porvafor intenta de nuevo!"));
+                    "Porfavor intenta de nuevo!"));
             return "/login";
         }
         //Sesion.abrirSesion();

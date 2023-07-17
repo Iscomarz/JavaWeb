@@ -26,16 +26,12 @@ public class Ciudad {
         
     }
 
- 
-
     /**
      * @return the id
      */
     public int getId() {
         return id;
     }
-
- 
 
     /**
      * @param id the id to set
@@ -44,16 +40,12 @@ public class Ciudad {
         this.id = id;
     }
 
- 
-
     /**
      * @return the descripcion
      */
     public String getDescripcion() {
         return descripcion;
     }
-
- 
 
     /**
      * @param descripcion the descripcion to set
@@ -62,8 +54,6 @@ public class Ciudad {
         this.descripcion = descripcion;
     }
 
- 
-
     /**
      * @return the estadoCliente
      */
@@ -71,13 +61,9 @@ public class Ciudad {
         return codigo;
     }
 
- 
-
     public void setCodigo(String codigo) {
         this.codigo = codigo;
     }
-
- 
 
     /**
      * @return the lada
@@ -85,8 +71,6 @@ public class Ciudad {
     public int getLada() {
         return lada;
     }
-
- 
 
     /**
      * @param lada the lada to set

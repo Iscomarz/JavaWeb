@@ -7,7 +7,7 @@
                 xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
     <ui:define  name="content">
         <h:head>
-            <title>parametro</title>
+            <title>Parámetros</title>
             <link href="../styles/newcss.css" rel="stylesheet" type="text/css"/>
             <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" />  
             <f:facet name="first">
@@ -23,29 +23,13 @@
                     <p:graphicImage name="../images/giphy.gif" />
                 </p:dialog>
                 <div class="flex align-items-center justify-content-start">
-                    <h2>Parametros</h2>                   
                 </div>
 
                 <p:toolbar>
                     <p:toolbarGroup style="display: block">
                         <h3>
-                            Agregar un nuevo parametro
+                            Agregar un nuevo parámetro
                         </h3>
-                        <p:ajaxStatus style="display:block;margin-bottom:2em;height:24px;">
-                            <f:facet name="default">
-                                <h:outputText value="Status: StandBy" />
-                            </f:facet>
-
-                            <f:facet name="start">
-                                <!-- <p:graphicImage width="50px" value="../images/giphy.gif" /> -->
-
-                            </f:facet>
-
-                            <f:facet name="complete">
-                                <h:outputText value="Status: Completed" />
-                            </f:facet>
-                        </p:ajaxStatus>
-                        
                          <p:ajaxStatus onstart="PF('statusDialog').show()" onsuccess="PF('statusDialog').hide()" />
 
                         <p:dialog widgetVar="statusDialog" modal="true" draggable="false" closable="false" resizable="false" showHeader="false">
@@ -55,9 +39,17 @@
                         
                         <h:panelGrid id="agregar" columns="4">
 
-                            <p:inputText id='Nombre' value="#{parametroBean.nombre}" required="true" style="margin-right: 25px" placeholder="Nombre" maxlength="20"/>
-                            <p:inputText id='Valor' value="#{parametroBean.valor}" required="true" style="margin-right: 25px" placeholder="Valor" maxlength="20"/>
-                            <p:inputText  value="#{parametroBean.descripcion}"  style="margin-right: 25px" placeholder="Descripción" maxlength="20"/>
+                            <p:inputText id='Nombre' value="#{parametroBean.nombre}" 
+                                         required="true" style="margin-right: 25px" 
+                                         placeholder="Nombre" maxlength="20"/>
+                            
+                            <p:inputText id='Valor' value="#{parametroBean.valor}" 
+                                         required="true" style="margin-right: 25px" 
+                                         placeholder="Valor" maxlength="20"/>
+                            
+                            <p:inputText  value="#{parametroBean.descripcion}"  
+                                          style="margin-right: 25px" placeholder="Descripción" 
+                                          maxlength="20"/>
 
                             <p:commandButton actionListener="#{parametroBean.agregarParametro}" value="Agregar" icon="pi pi-plus" process="@this agregar"
                                              class="ui-button-info"  update="table msgs agregar" style="margin-right: .5rem">
@@ -74,68 +66,87 @@
                               filteredValue="#{parametroBean.parametrosFiltrados}" 
                               editable="true">
 
-                    <p:ajax event="rowEdit" listener="#{parametroBean.editarParametro(parametro.id, parametro.nombre, parametro.valor, parametro.descripcion)}" update=":form:msgs"/>
+                    <p:ajax event="rowEdit"  update=":form:msgs"
+                            listener="#{parametroBean.editarParametro(parametro.id, parametro.nombre, parametro.valor, parametro.descripcion)}" 
+                           />
                     <p:ajax event="rowEditCancel" listener="#{respuesta.cancel()}" update=":form:msgs"/>  
 
-                    <p:column field="ID" headerText="Id" filterMaxLength="10" filterBy="#{parametro.id}">
+                    <p:column field="ID" headerText="Id parámetro" filterMaxLength="10" 
+                              filterBy="#{parametro.id}">
                         <p:cellEditor>
                             <f:facet name="output">
                                 <h:outputText value="#{parametro.id}" /> 
                             </f:facet>
                             <f:facet name="input">
-                                <h:inputText disabled="true" style="width:100%" value="#{parametro.id}" /> 
+                                <h:inputText disabled="true" style="width:100%" 
+                                             value="#{parametro.id}" /> 
                             </f:facet>
                         </p:cellEditor>
                     </p:column>                 
 
-                    <p:column field="NOMBRE" headerText="Nombre" filterMaxLength="20" filterBy="#{parametro.nombre}" filterMatchMode="contains">
+                    <p:column field="NOMBRE" headerText="Nombre" filterMaxLength="20" 
+                              filterBy="#{parametro.nombre}" filterMatchMode="contains">
                         <p:cellEditor>
                             <f:facet name="output">
                                 <h:outputText  value="#{parametro.nombre}" />
                             </f:facet>                      
                             <f:facet name="input">
-                                <p:inputText maxlength="20"  rendered="true" value="#{parametro.nombre}" style="width:100%"/>
+                                <p:inputText maxlength="20"  rendered="true" 
+                                             value="#{parametro.nombre}" 
+                                             style="width:100%"/>
                             </f:facet>
                         </p:cellEditor>                       
                     </p:column>
 
-                    <p:column field="VALOR" headerText="Valor" filterMaxLength="20" filterBy="#{parametro.valor}" filterMatchMode="contains">
+                    <p:column field="VALOR" headerText="Valor" filterMaxLength="20" 
+                              filterBy="#{parametro.valor}" filterMatchMode="contains">
                         <p:cellEditor>
                             <f:facet name="output">
                                 <h:outputText  value="#{parametro.valor}" />
                             </f:facet>                      
                             <f:facet name="input">
-                                <p:inputText maxlength="20"  rendered="true" value="#{parametro.valor}" style="width:100%"/>
+                                <p:inputText maxlength="20"  rendered="true" 
+                                             value="#{parametro.valor}" style="width:100%"/>
                             </f:facet>
                         </p:cellEditor>                       
                     </p:column>
 
-                    <p:column field="DESCRIPCION" headerText="Descripción" filterMaxLength="20" filterBy="#{parametro.descripcion}" filterMatchMode="contains">
+                    <p:column field="DESCRIPCION" headerText="Descripción" 
+                              filterMaxLength="20" filterBy="#{parametro.descripcion}" 
+                              filterMatchMode="contains">
                         <p:cellEditor>
                             <f:facet name="output">
                                 <h:outputText  value="#{parametro.descripcion}" />
                             </f:facet>                      
                             <f:facet name="input">
-                                <p:inputText maxlength="20"  rendered="true" value="#{parametro.descripcion}" style="width:100%"/>
+                                <p:inputText maxlength="20"  rendered="true" 
+                                             value="#{parametro.descripcion}" style="width:100%"/>
                             </f:facet>
                         </p:cellEditor>                       
                     </p:column>
 
-                    <p:column style="width:2rem">
-                        <p:rowEditor  id="ideditor" editTitle="Edit Row" cancelTitle="Cancel Edit" saveTitle="Save Row"/>                        
+                    <p:column style="width:32px;text-align: center">
+                        <p:rowEditor  id="ideditor" editTitle="Edit Row" 
+                                      cancelTitle="Cancel Edit" saveTitle="Save Row"/>                        
                     </p:column>
 
-                    <p:column style="width:2rem">
-                        <p:commandButton id="btnBorrar" update="form:table form:msgs" process="@this table" action="#{parametroBean.borrarParametro(parametro.id)}" class="ui-button-danger rounded-button" icon="pi pi-trash">
-                            <p:confirm header="Confirmar" message="¿Estas seguro de eliminar este parametro
+                    <p:column style="width:32px;text-align: center">
+                        <p:commandButton id="btnBorrar" update="form:table form:msgs" 
+                                         process="@this table" icon="pi pi-trash"
+                                         action="#{parametroBean.borrarParametro(parametro.id)}" 
+                                         class="ui-button-danger rounded-button" >
+                            <p:confirm header="Confirmar" message="¿Estás seguro de eliminar este parametro
                                        ?" icon="pi pi-exclamation-triangle"/>
                         </p:commandButton>
                     </p:column>
                 </p:dataTable>
 
                 <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
-                    <p:commandButton value="Yes" type="button" styleClass="ui-confirmdialog-yes" icon="pi pi-check" />
-                    <p:commandButton value="No" type="button" action="#{respuesta.cancel()}" styleClass="ui-confirmdialog-no" icon="pi pi-times" />
+                    <p:commandButton value="Yes" type="button" styleClass="ui-confirmdialog-yes" 
+                                     icon="pi pi-check" />
+                    
+                    <p:commandButton value="No" type="button" action="#{respuesta.cancel()}" 
+                                     styleClass="ui-confirmdialog-no" icon="pi pi-times" />
                 </p:confirmDialog>
 
             </h:form>
