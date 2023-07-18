@@ -64,25 +64,13 @@
                               rows="10" var="parametro"
                               value="#{parametroBean.parametros}"
                               filteredValue="#{parametroBean.parametrosFiltrados}" 
-                              editable="true">
+                              editable="true" rowsPerPageTemplate="5,10,15,20,{ShowAll|'All'}">
 
                     <p:ajax event="rowEdit"  update=":form:msgs"
                             listener="#{parametroBean.editarParametro(parametro.id, parametro.nombre, parametro.valor, parametro.descripcion)}" 
                            />
                     <p:ajax event="rowEditCancel" listener="#{respuesta.cancel()}" update=":form:msgs"/>  
-
-                    <p:column field="ID" headerText="Id parámetro" filterMaxLength="10" 
-                              filterBy="#{parametro.id}">
-                        <p:cellEditor>
-                            <f:facet name="output">
-                                <h:outputText value="#{parametro.id}" /> 
-                            </f:facet>
-                            <f:facet name="input">
-                                <h:inputText disabled="true" style="width:100%" 
-                                             value="#{parametro.id}" /> 
-                            </f:facet>
-                        </p:cellEditor>
-                    </p:column>                 
+                 
 
                     <p:column field="NOMBRE" headerText="Nombre" filterMaxLength="20" 
                               filterBy="#{parametro.nombre}" filterMatchMode="contains">

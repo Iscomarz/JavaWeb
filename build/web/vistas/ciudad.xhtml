@@ -65,23 +65,13 @@
                               rows="10" var="ciudad"
                               value="#{ciudadBean.ciudades}"
                               filteredValue="#{ciudadBean.ciudadesFiltradas}" 
-                              editable="true">
+                              editable="true" rowsPerPageTemplate="5,10,15,20,{ShowAll|'All'}">
 
                     <p:ajax event="rowEdit" update=":form:msgs"
                             listener="#{ciudadBean.editarCiudad(ciudad.id, ciudad.codigo, ciudad.descripcion, ciudad.lada)}" />
                     
                     <p:ajax event="rowEditCancel" listener="#{respuesta.cancel()}" update=":form:msgs"/>  
 
-                    <p:column  field="ID_CIUDAD" headerText="Id ciudad" filterMaxLength="10" filterBy="#{ciudad.id}">
-                        <p:cellEditor>
-                            <f:facet name="output">
-                                <h:outputText value="#{ciudad.id}" /> 
-                            </f:facet>
-                            <f:facet name="input">
-                                <h:inputText disabled="true" style="width:100%" value="#{ciudad.id}" /> 
-                            </f:facet>
-                        </p:cellEditor>                        
-                    </p:column>
 
                     <p:column field="DESCRIPCION" headerText="Descripción" filterMaxLength="20" 
                               filterBy="#{ciudad.descripcion}" filterMatchMode="contains">
