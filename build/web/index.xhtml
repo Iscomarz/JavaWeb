@@ -55,7 +55,7 @@
 
             <p:growl id="messages" showDetail="true" sticky="true"/>
 
-            <p:idleMonitor timeout="500000" onidle="PF('idleDialog').show()">
+            <p:idleMonitor timeout="50000" onidle="PF('idleDialog').show()">
                 <p:ajax event="idle" listener="#{idleMonitor.onIdle}" update="messages"/>
                 <p:ajax event="active" listener="#{idleMonitor.onActive}" update="messages"/>
             </p:idleMonitor>
